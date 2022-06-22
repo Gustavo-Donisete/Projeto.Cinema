@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <ul>
+        {% for ingresso in ingressos %}
+            <a href="{% url 'update_Ingresso' ingresso.id %}">
+                <li> {{ ingresso.meio }} - {{ ingresso.inteira }} - {{ ingresso.fisico }}  - {{ingresso.online}}</li>
+            </a>
+        {% endfor %}
+    </ul>
+    <a class="btn btn-primary" href="{% url 'create_Ingresso' %}">Novo Ingresso</a>
+
+    <ul>
+        {% for sessao in sessoes %}
+            <a href="{% url 'update_Sessao' sessao.id %}">
+                <li> {{ sessao.horarios }} - {{ sessao.periodo }}</li>
+            </a>
+        {% endfor %}
+    </ul>
+    <a class="btn btn-primary" href="{% url 'create_Sessao' %}">Nova Sessao</a>
+
+
+    <ul>
+        {% for filme in filmes %}
+            <a href="{% url 'update_Filme' filme.id %}">
+                <li> {{ filme.nomeFilme }} - {{ filme.duracao }} - {{ filme.genero }}</li>
+            </a>
+        {% endfor %}
+    </ul>
+    <a class="btn btn-primary" href="{% url 'create_Filme' %}">Selecionar Filme</a>
+
+{% endblock %}

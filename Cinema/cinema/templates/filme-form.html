@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+      <form method="POST" novalidate>
+        {% csrf_token %}
+          <div class="form-group">
+            {{ form.nomeFilme |as_crispy_field }}
+          </div>
+
+          <div class="form-group">
+            {{ form.duracao |as_crispy_field  }}
+          </div>
+
+          <div class="form-group">
+            {{ form.genero |as_crispy_field  }}
+          </div>
+
+        <button type="submit" class="btn btn-success">Salvar</button>
+
+            {% if filmes %}
+                 <a href="{% url 'delete_Filme' filmes.id %}" class="btn btn-danger">Excluir</a>
+            {% endif %}
+
+          <a class="btn btn-light" href="{% url 'list_Filme' %}">Cancelar</a>
+      </form>
+{% endblock %}

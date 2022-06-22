@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+      <form method="POST" novalidate>
+        {% csrf_token %}
+          <div class="form-group">
+            {{ form.meio |as_crispy_field }}
+          </div>
+
+          <div class="form-group">
+            {{ form.inteira |as_crispy_field  }}
+          </div>
+
+          <div class="form-group">
+            {{ form.fisico |as_crispy_field  }}
+          </div>
+
+          <div class="form-group">
+            {{ form.online |as_crispy_field  }}
+          </div>
+
+        <button type="submit" class="btn btn-success">Salvar</button>
+
+            {% if ingressos %}
+                 <a href="{% url 'delete_Ingresso' ingressos.id %}" class="btn btn-danger">Excluir</a>
+            {% endif %}
+
+          <a class="btn btn-light" href="{% url 'list_Ingresso' %}">Cancelar</a>
+      </form>
+{% endblock %}
